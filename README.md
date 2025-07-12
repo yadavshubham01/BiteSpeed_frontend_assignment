@@ -1,69 +1,96 @@
-# React + TypeScript + Vite
+# 🤖 Chatbot Flow Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple yet extensible chatbot flow builder built with **React**, **React Flow**, and **Tailwind CSS**. It allows users to visually create chatbot message flows by connecting text message nodes.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🧩 **Drag-and-drop nodes** to build conversation flows
+- 🔗 **Connect nodes** using edges
+- ⚙️ **Settings panel** for editing message content
+- 💾 **Save flow** with validation
+- ⚠️ **Error handling** for disconnected flows
+- 🎨 Clean and responsive **UI with Tailwind CSS**
+- ♻️ Extensible architecture to add new node types
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 📦 Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [React](https://reactjs.org/)
+- [React Flow](https://reactflow.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [React Toastify](https://fkhadra.github.io/react-toastify/)
+
+---
+
+## 🖼️ Project Structure
+
+```bash
+
+chatbot-flow-builder/
+├── components/
+│   ├── AddNode.tsx       # Custom node UI
+│   ├── Sidebar.tsx             # Node type panel
+│   ├── Navbar.tsx              # Save button + header
+│   └── UpdateNode.tsx          # Node settings panel
+├── App.tsx                     # Main application logic
+├── index.css                   # Tailwind + custom styles
+├── main.tsx                    # Entry point
+├── tailwind.config.js          # Tailwind configuration
+├── postcss.config.js           # PostCSS plugins
+└── README.md                   # Project documentation
+
+````
+
+---
+
+## 🧑‍💻 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yadavshubham01/BiteSpeed_frontend_assignment.git
+cd BiteSpeed_frontend_assignment
+````
+
+### 2. Install Dependencies
+
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Start Development Server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+### 4. Build for Production
+
+```bash
+npm run build
+```
+
+---
+
+## 💡 Save Flow Validation
+
+* ✅ If **all nodes are connected** properly, a success toast appears.
+* ❌ If **multiple nodes have no incoming connections**, an error is shown.
+
+---
+
+## 🛠️ Customization
+
+* You can easily add new node types in `Sidebar.tsx` and render them by extending the `nodeTypes` in `App.tsx`.
+* The current implementation supports `Text Node`, but it's structured to allow future expansion.
+
+
+
+## 📋 License
+
+MIT © [Shubham Yadav](https://github.com/yadavshubham01)
+
