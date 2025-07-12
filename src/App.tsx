@@ -8,7 +8,7 @@ import ReactFlow, {
   MiniMap,
   MarkerType,
 } from 'reactflow';
-import { ToastContainer, toast, type ToastPosition} from 'react-toastify';
+import { ToastContainer, toast, type ToastOptions} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import type { ReactFlowInstance, Connection,Edge,Node } from 'reactflow';
 import { useState, useRef, useCallback, useMemo } from 'react';
@@ -29,10 +29,8 @@ const App = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null);
   const [nodeSelected, setNodeSelected] = useState(false);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
-  const [targetHandles, setTargetHandles] = useState<string[]>([]);
 
   let sourceHandles: string[] = [];
-  let targetHandle: string[] = [];
 
   const updateNode = useCallback((_: any, node: Node) => {
     setSelectedNode(node);
@@ -47,9 +45,6 @@ const App = () => {
       addEdge({ ...params, animated: true, markerEnd: { type: MarkerType.ArrowClosed } }, eds)
     );
 
-    if (targetHandle.includes(params.target as string)) return;
-    targetHandle = [...targetHandle, params.target as string];
-    setTargetHandles(targetHandle);
   }, [setCustomEdges]);
 
   const onDragOver = useCallback((event: React.DragEvent) => {
@@ -98,15 +93,13 @@ const App = () => {
     const nodes = reactFlowInstance.getNodes();
     const edges = reactFlowInstance.getEdges();
 
-    const notification = {
-      position:'top-left' as ToastPosition,
+    const notification:ToastOptions = {
+      position:'top-left',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
-      theme: "light",
     };
 
   const targetNodeIds = new Set(edges.map(edge => edge.target));
