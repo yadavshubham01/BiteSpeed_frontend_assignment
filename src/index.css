@@ -1,0 +1,145 @@
+/* Root variables and global styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  color: #111;
+  background-color: #f9fafb;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Selected node */
+.react-flow__node.selected {
+  border: 3px solid #3b82f6;
+  border-radius: 8px;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+}
+
+/* Layout */
+.appflow {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: 100vh;
+}
+
+/* Canvas wrapper */
+.reactflow-wrapper {
+  flex-grow: 1;
+  height: 100%;
+}
+
+/* Right panel */
+.rightbar {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  border-left: 1px solid #d1d5db;
+  background-color: #ffffff;
+  padding: 16px;
+}
+
+/* Save bar */
+.savingChange {
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Update node text */
+.update {
+  padding: 12px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.update textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 14px;
+  resize: vertical;
+  background: #f9fafb;
+  color: #111;
+}
+
+/* Back nav */
+.update .back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #111;
+  cursor: pointer;
+}
+
+/* Sidebar left */
+aside {
+  padding: 16px;
+  background-color: #f3f4f6;
+  border-right: 1px solid #e5e7eb;
+}
+
+.description {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #374151;
+}
+
+.appnode {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: grab;
+  text-align: center;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100px;
+  margin-top: 8px;
+}
+
+.appnode:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+textarea:focus {
+  outline: 2px solid #3b82f6;
+  background: #fff;
+}
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+  .appflow {
+    flex-direction: column;
+  }
+
+  .rightbar {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}
